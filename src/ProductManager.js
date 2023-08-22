@@ -9,14 +9,6 @@ class ProductManager {
   }
 
   async updateProduct(productId) {
-    /*
-      1. Leer el archivo 
-      2. Transformar el archivo de texto a una lista de objetos con JSON.parse
-      3. Buscamos el producto a modificar
-      4. Modificamos el producto en la lista
-      5. Escribimos en el archivo el resultado de hacer JSON.stringify 
-    */
-
     // Paso 1
     const data = await fs.promises.readFile("productos.json", "utf-8");
 

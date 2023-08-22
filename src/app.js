@@ -30,4 +30,4 @@ app.get("/products/:productId", async (req, res) => {
   res.send(product);
 });
 
-app.listen(8080, () => console.log("debería andar"));
+app.listen(8080, () => console.log("debería estar funcionando"));
