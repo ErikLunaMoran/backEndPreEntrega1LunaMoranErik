@@ -1,0 +1,83 @@
+[
+  {
+    "id": 1,
+    "title": "Kongo Gato Adulto",
+    "description": "Alimento para gato adulto",
+    "price": "$3.000",
+    "thumbnail": "imagenGato1.jpg",
+    "code": "2.19.1",
+    "stock": 40
+  },
+  {
+    "id": 2,
+    "title": "Kongo Gatito",
+    "description": "Alimento para gato joven",
+    "price": "$2.500",
+    "thumbnail": "imagenGato2.jpg",
+    "code": "2.19.2",
+    "stock": 11
+  },
+  {
+    "id": 4,
+    "title": "Kongo Gato Adulto",
+    "description": "Alimento para gato adulto",
+    "price": "$3.000",
+    "thumbnail": "imagenGato1.jpg",
+    "code": "2.19.1",
+    "stock": 50
+  },
+  {
+    "id": 5,
+    "title": "Kongo Gatito",
+    "description": "Alimento para gato joven",
+    "price": "$2.500",
+    "thumbnail": "imagenGato2.jpg",
+    "code": "2.19.2",
+    "stock": 11
+  },
+  {
+    "id": 6,
+    "title": "Kongo Gato Urinary",
+    "description": "Alimento para gato con cuidados urinarios",
+    "price": "$5.000",
+    "thumbnail": "imagenGato3.jpg",
+    "code": "2.19.3",
+    "stock": 30
+  },
+  {
+    "id": 7,
+    "title": "Old Prince Premium Gato Adulto",
+    "description": "Alimento premium para gato adulto",
+    "price": "$12.000",
+    "thumbnail": "imagenGato3.jpg",
+    "code": "2.19.4",
+    "stock": 81
+  },
+  {
+    "id": 8,
+    "title": "Old Prince Premium Gatito",
+    "description": "Alimento premium para gatito",
+    "price": "$10.000",
+    "thumbnail": "imagenGato3.jpg",
+    "code": "2.19.5",
+    "stock": 70
+  },
+  {
+    "id": 9,
+    "title": "Old Prince Premium Complete Care",
+    "description": "Alimento premium para gato con completo cuidado",
+    "price": "$9.000",
+    "thumbnail": "imagenGato3.jpg",
+    "code": "2.19.6",
+    "stock": 34
+  },
+  {
+    "id": 10,
+    "title": "Old Prince Premium Indoor",
+    "description": "Alimento para gato de interior",
+    "price": "$8.000",
+    "thumbnail": "imagenGato3.jpg",
+    "code": "2.19.7",
+    "stock": 46
+  }
+]
