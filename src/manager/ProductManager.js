@@ -3,7 +3,10 @@ import fs from "fs";
 class ProductManager {
   async getProducts() {
     try {
-      const data = await fs.promises.readFile("./src/productos.json", "utf-8");
+      const data = await fs.promises.readFile(
+        "./src/fileSystem/productos.json",
+        "utf-8"
+      );
       return JSON.parse(data);
     } catch (error) {
       return [];
@@ -19,7 +22,7 @@ class ProductManager {
       products.push(productWithId);
 
       await fs.promises.writeFile(
-        "./src/productos.json",
+        "./src/fileSystem/productos.json",
         JSON.stringify(products)
       );
 
@@ -50,7 +53,7 @@ class ProductManager {
       products[productIndex] = updatedProduct;
 
       await fs.promises.writeFile(
-        "./src/productos.json",
+        "./src/fileSystem/productos.json",
         JSON.stringify(products)
       );
 
@@ -73,7 +76,7 @@ class ProductManager {
 
       const deletedProduct = products.splice(productIndex, 1)[0];
       await fs.promises.writeFile(
-        "./src/productos.json",
+        "./src/fileSystem/productos.json",
         JSON.stringify(products)
       );
 
