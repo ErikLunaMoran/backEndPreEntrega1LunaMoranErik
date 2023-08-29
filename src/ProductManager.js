@@ -1,29 +1,87 @@
-const fs = require("fs");
+import fs from "fs";
 
 class ProductManager {
   async getProducts() {
-    const data = JSON.parse(
-      await fs.promises.readFile("./src/productos.json", "utf-8")
-    );
-    return data;
+    try {
+      const data = await fs.promises.readFile("./src/productos.json", "utf-8");
+      return JSON.parse(data);
+    } catch (error) {
+      return [];
+    }
   }
 
-  async updateProduct(productId) {
-    // Paso 1
-    const data = await fs.promises.readFile("productos.json", "utf-8");
+  //MANEJO DE AGREGAR PRODUCTOS
+  async addProduct(newProduct) {
+    try {
+      const products = await this.getProducts();
+      const newProductId = products.length + 1; // Asignar un nuevo ID al producto
+      const productWithId = { id: newProductId, ...newProduct };
+      products.push(productWithId);
 
-    // Paso 2
-    const products = JSON.parse(data);
+      await fs.promises.writeFile(
+        "./src/productos.json",
+        JSON.stringify(products)
+      );
 
-    // Paso 3
-    const product = products.find(({ id }) => id === productId);
+      return productWithId;
+    } catch (error) {
+      return null; // Indica un error al agregar el producto
+    }
+  }
 
-    // Paso 4
-    product.atributo = nuevoValor;
+  //MANEJO DE ACTUALIZAR PRODUCTOS
+  async updateProduct(pid, updatedAttributes) {
+    try {
+      const products = await this.getProducts();
 
-    // Paso 5
-    await fs.promises.writeFile("productos.json", JSON.stringify(products));
+      const productIndex = products.findIndex((product) => product.id === pid);
+
+      if (productIndex === -1) {
+        return null; // Indica que el producto no se encontró
+      }
+
+      // Asegurarse de que el ID no se actualice
+      const updatedProduct = {
+        ...products[productIndex],
+        ...updatedAttributes,
+        id: products[productIndex].id,
+      };
+
+      products[productIndex] = updatedProduct;
+
+      await fs.promises.writeFile(
+        "./src/productos.json",
+        JSON.stringify(products)
+      );
+
+      return updatedProduct;
+    } catch (error) {
+      return null; // Indica un error al actualizar el producto
+    }
+  }
+
+  //MANEJO DE ELIMINACION DE PRODUCTO POR ID
+  async deleteProduct(pid) {
+    try {
+      const products = await this.getProducts();
+
+      const productIndex = products.findIndex((product) => product.id === pid);
+
+      if (productIndex === -1) {
+        return null; // Indica que el producto no se encontró
+      }
+
+      const deletedProduct = products.splice(productIndex, 1)[0];
+      await fs.promises.writeFile(
+        "./src/productos.json",
+        JSON.stringify(products)
+      );
+
+      return deletedProduct;
+    } catch (error) {
+      return null; // Indica un error al eliminar el producto
+    }
   }
 }
 
-module.exports = ProductManager;
+export default ProductManager;

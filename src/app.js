@@ -1,33 +1,16 @@
-const express = require("express");
-const ProductManager = require("./ProductManager.js");
-const productManager = new ProductManager();
+import express from "express";
+/* const express = require("express"); */
+import ProductManager from "./ProductManager.js";
+/* const ProductManager = require("./ProductManager.js"); */
+import productsRouter from "./routes/productsRouter.js";
 
 const app = express();
+const productManager = new ProductManager();
 
+//Para que nuestra API lea JSON
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/products", async (req, res) => {
-  const limit = req.query.limit;
-  const products = await productManager.getProducts();
+app.use("/api/products", productsRouter(productManager));
 
-  if (limit) {
-    return res.send(products.slice(0, limit));
-  }
-
-  res.send(products);
-});
-
-app.get("/products/:productId", async (req, res) => {
-  const productId = parseInt(req.params.productId, 10);
-  const products = await productManager.getProducts();
-
-  const product = products.find(({ id }) => id === productId);
-  if (product === undefined) {
-    return res.status(404).send();
-  }
-
-  res.send(product);
-});
-
-app.listen(8080, () => console.log("debería estar funcionando"));
+app.listen(8080, () => console.log("Servidor encendido"));
